@@ -83,10 +83,15 @@ class FlashCard(object):
         self.english = re.sub(TIP_LINK, r'(\1);', self.english)
         # print(self.english)
 
+        return
+
+    def split_up(self):
+        if self.english.startswith('1 '):
+            pass
 
 
-input_file_path = os.getcwd()
-# print(input_file_path)
+
+input_file_path = os.getcwd() + '/input_files/'
 
 
 directory_contents = os.listdir(input_file_path)
@@ -95,7 +100,7 @@ directory_contents = os.listdir(input_file_path)
 
 for file in directory_contents:
     if file.endswith('.txt'):
-        input_file = file
+        input_file = input_file_path + file
 
 
 with open(input_file, 'r') as f:
@@ -104,12 +109,13 @@ with open(input_file, 'r') as f:
     pleco_input_list = pleco_input_list[0:-1]
 
 
+# TODO: Vissa pinyin blir fel, t ex Zhou4 Xin1 och Wei4 Jin4
 card_deck = []
 for entry in pleco_input_list:
-    chinese, pinyin, english = entry.split(None, 2)
-    card_deck.append(FlashCard(chinese, pinyin, english))
-
-
-for fc in card_deck:
+    chinese, pinyin, english = entry.split('\t', 2)
+    # card_deck.append(FlashCard(chinese, pinyin, english))
+    fc = FlashCard(chinese, pinyin, english)
+    card_deck.append(fc)
     print()
+    # print(entry)
     print(fc)
