@@ -76,6 +76,7 @@ class FlashCard(object):
 
         return
 
+
     def clean_up(self):
         self.english = self.english.translate(TRANSLATION_TABLE)
 
@@ -99,6 +100,7 @@ class FlashCard(object):
         # print(self.english)
 
         return
+
 
     def split_up(self, input_string):
         print(input_string)
@@ -125,31 +127,27 @@ def is_int(s):
         return False
 
 
-input_file_path = os.getcwd() + '/input_files/'
+def main():
+    input_file_path = os.getcwd() + '/input_files/'
+    directory_contents = os.listdir(input_file_path)
+    for file in directory_contents:
+        if file.endswith('.txt'):
+            input_file = input_file_path + file
+
+    with open(input_file, 'r') as f:
+        pleco_raw_input = f.read()
+        pleco_input_list = pleco_raw_input.split('\n')
+        pleco_input_list = pleco_input_list[0:-1]
 
 
-directory_contents = os.listdir(input_file_path)
-# print(directory_contents)
+    card_deck = []
+    for entry in pleco_input_list:
+        chinese, pinyin, english = entry.split('\t', 2)
+        fc = FlashCard(chinese, pinyin, english)
+        card_deck.append(fc)
+        print(fc)
+        print()
 
 
-for file in directory_contents:
-    if file.endswith('.txt'):
-        input_file = input_file_path + file
-
-
-with open(input_file, 'r') as f:
-    pleco_raw_input = f.read()
-    pleco_input_list = pleco_raw_input.split('\n')
-    pleco_input_list = pleco_input_list[0:-1]
-
-
-# TODO: Vissa pinyin blir fel, t ex Zhou4 Xin1 och Wei4 Jin4
-card_deck = []
-for entry in pleco_input_list:
-    chinese, pinyin, english = entry.split('\t', 2)
-    # card_deck.append(FlashCard(chinese, pinyin, english))
-    fc = FlashCard(chinese, pinyin, english)
-    card_deck.append(fc)
-    # print(entry)
-    print(fc)
-    print()
+if __name__ == "__main__":
+    main()
