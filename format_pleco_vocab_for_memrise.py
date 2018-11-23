@@ -1,5 +1,6 @@
 import os
 import re
+import datetime
 
 
 # These are the UNICODE-numbers for characters that show up as question marks.
@@ -46,8 +47,8 @@ TIP_LINK = u'(See \w+ [\u4e00-\u9fff]+((?=[\s])|\S))'
 class FlashCard(object):
     def __init__(self, chinese, pinyin, english, part_of_speech='unknown'):
         self.chinese = chinese
-        self.pinyin = pinyin
         self.english = english
+        self.pinyin = pinyin
         self.part_of_speech = part_of_speech
         self.find_part_of_speech()
         self.clean_up()
@@ -132,6 +133,17 @@ class FlashCard(object):
         return input_string
 
 
+    def get_textfile_output(self):
+        c = self.chinese
+        e = self.english
+        e = e.replace('\n\t\t\t', ' ')
+        p = self.pinyin
+        pos = self.part_of_speech
+        output = c + '\t' + e + '\t' + p + '\t' + pos
+
+        return output
+
+
 def is_int(s):
     try:
         int(s)
@@ -141,11 +153,13 @@ def is_int(s):
 
 
 def main():
-    input_file_path = os.getcwd() + '/input_files/'
+    local_directory_path = os.getcwd()
+    input_file_path = local_directory_path + '/input_files/'
     directory_contents = os.listdir(input_file_path)
     for file in directory_contents:
         if file.endswith('.txt'):
             input_file = input_file_path + file
+
 
     with open(input_file, 'r') as f:
         pleco_raw_input = f.read()
@@ -160,6 +174,17 @@ def main():
         card_deck.append(fc)
         print(fc)
         print()
+    # print(len(card_deck))
+
+
+    now = datetime.datetime.now()
+    todays_date = str(now)[:10]
+    output_file_path = local_directory_path + '/output_files/'
+    output_file_name = todays_date + '.txt'
+    output_file = output_file_path + output_file_name
+    with open(output_file, 'w') as f:
+        for fc in card_deck:
+            f.write(fc.get_textfile_output() + '\n\n')
 
 
 if __name__ == "__main__":
