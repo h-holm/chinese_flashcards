@@ -22,7 +22,8 @@ TIP_LINK = u'(See \w+ [\u4e00-\u9fff]+((?=[\s])|\S))'
 
 REGEX_PARENTHESES_NUMBER = u'^\([a-zA-Z]+\) \d '
 # REGEX_PARENTHESES_NUMBER = u'^(\(' + VOCAB_DESCRIPTIONS_STRING + u'\))( )(\d)( )'
-REGEX_PARENTHESES_NUMBER = u'^(\([a-zA-Z]+\) )(\d )'
+# REGEX_PARENTHESES_NUMBER = u'^(\([a-zA-Z]+\) )(\d )'
+REGEX_PARENTHESES_NUMBER = u'^(\([' + VOCAB_DESCRIPTIONS_STRING + u']+\) )(\d )'
 
 class FlashCard(object):
     PART_OF_SPEECH = ('noun', 'adjective', 'verb', 'adverb', 'idiom', 'pronoun',
@@ -89,11 +90,13 @@ class FlashCard(object):
         # print(self.english)
         self.english = re.sub(TIP_LINK, r'(\1)', self.english)
         # print(self.english)
-        if re.search(REGEX_PARENTHESES_NUMBER, self.english):
-            print('MATCH', self)
+
+        # if re.search(REGEX_PARENTHESES_NUMBER, self.english):
+        #     print('MATCH', self)
 
         # self.english = re.sub(r'(parenthesis)(.*)(1)', r'\3\2\1', self.english)
         self.english = re.sub(REGEX_PARENTHESES_NUMBER, r'\2\1', self.english)
+        # print(self.english)
 
         return
 
