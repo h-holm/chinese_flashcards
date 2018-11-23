@@ -103,18 +103,13 @@ class FlashCard(object):
 
 
     def split_up(self, input_string):
-        print(input_string)
-        if is_int(input_string[0]) and input_string[1] == ' ':
-            # look_for_string = ' ' + str(int(input_string[0])+1) + ' '
-            # print(look_for_string)
-            # idx = input_string.index(look_for_string)
-            match = re.search(' \d ', input_string)
-            if match:
-                idx = match.start()
-                s1 = input_string[0:idx+1]
-                s2 = input_string[idx+1:]
-                s2 = self.split_up(input_string[idx+1:])
-                input_string = s1.strip() + ';\n\t\t\t' + s2
+        match = re.search(' \d ', input_string)
+        if match:
+            idx = match.start()
+            s1 = input_string[0:idx+1]
+            s2 = input_string[idx+1:]
+            s2 = self.split_up(input_string[idx+1:])
+            input_string = s1.strip() + ';\n\t\t\t' + s2
 
         return input_string
 
