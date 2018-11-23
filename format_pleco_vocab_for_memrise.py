@@ -2,36 +2,49 @@ import os
 import re
 
 
+# These are the UNICODE-numbers for characters that show up as question marks.
+# Since they're invalid (for some reason), we want to remove them. We do this by
+# mapping all such characters to '', meaning they'll be "translated" to nothing.
 START = 55204
 END = 63742
 DICT_OF_RANGE = dict.fromkeys(range(START, END+1), '')
 TRANSLATION_TABLE = str.maketrans(DICT_OF_RANGE)
 
-REGEX_NUMBER_CHINESE = u'([0-9]{2,}[\u4e00-\u9fff]+)'
-REGEX_PINYIN_CHINESE = u'([a-zA-Z]{1,1}[0-9]{1,1}(?=[\u4e00-\u9fff]))'
+# Pleco includes the part of speech of entries.
+PARTS_OF_SPEECH_LIST = ['noun', 'adjective', 'verb', 'adverb', 'idiom', 'pronoun',
+'preposition', 'conjunction', 'interjection', 'abstract noun', 'measure word']
 
+# Pleco also includes the topic/subject of words/phrases.
 VOCAB_DESCRIPTIONS_LIST = ['literary', 'linguistics', 'archaic', 'zoology',
-'pejorative', 'sports', 'botany', 'medicine', 'transliteration', 'dialect',
+'pejorative', 'sports', 'botany', 'Chinese medicine', 'medicine', 'dialect',
 'ichthyology', 'courteous', 'polite expression', 'vulgar', 'chemistry',
 'electronics', 'colloquial', 'linguistics', 'dated', 'ornithology', 'textile',
-'mathematics', 'astronomy']
-VOCAB_DESCRIPTIONS_STRING = '|'.join(VOCAB_DESCRIPTIONS_LIST)
-REGEX_VOCAB_DESCRIPTIONS = u'(' + VOCAB_DESCRIPTIONS_STRING + ')'
+'mathematics', 'astronomy', 'internet slang', 'slang', 'anatomy', 'Buddhism',
+'religion', 'philosophy', 'Taoism', 'Christianity', 'physics', 'biology',
+'computing', 'geology', 'electricity', 'law', 'music', 'formal', 'informal',
+'abbreviation', 'history', 'economics', 'Islam', 'Catholicism',
+'transliteration', 'figurative', 'metallurgy', 'mechanics', 'well\-known phrase',
+'loanword', 'mythology']
 
+# Make a bunch of regular expressions to catch parts of speech/subjects.
+VOCAB_DESCRIPTIONS_STRING = '|'.join(VOCAB_DESCRIPTIONS_LIST)
+REGEX_VOCAB_DESCRIPTIONS = u'(' + VOCAB_DESCRIPTIONS_STRING + ')(?=[\s])'
+REGEX_PARENTHESES_NUMBER = u'^(\([' + VOCAB_DESCRIPTIONS_STRING + u']+\) )(\d )'
+REGEX_NUMBER_CHINESE = u'([0-9]{2,}[\u4e00-\u9fff]+)'
+REGEX_PINYIN_CHINESE = u'([a-zA-Z]{1,1}[0-9]{1,1}(?=[\u4e00-\u9fff]))'
 TIP_LINK = u'(See \w+ [\u4e00-\u9fff]+((?=[\s])|\S))'
 
-REGEX_PARENTHESES_NUMBER = u'^\([a-zA-Z]+\) \d '
+# REGEX_PARENTHESES_NUMBER = u'^\([a-zA-Z]+\) \d '
 # REGEX_PARENTHESES_NUMBER = u'^(\(' + VOCAB_DESCRIPTIONS_STRING + u'\))( )(\d)( )'
 # REGEX_PARENTHESES_NUMBER = u'^(\([a-zA-Z]+\) )(\d )'
-REGEX_PARENTHESES_NUMBER = u'^(\([' + VOCAB_DESCRIPTIONS_STRING + u']+\) )(\d )'
 
+
+# An object of the FlashCard class represents a Pleco flashcard, i.e. the
+# original Chinese entry, its translation and its pinyin (romanization).
+# The part of speech as well as the subject are all "hidden" in the English
+# translation and thus need to be captured.
 class FlashCard(object):
-    PART_OF_SPEECH = ('noun', 'adjective', 'verb', 'adverb', 'idiom', 'pronoun',
-                      'preposition', 'conjunction', 'interjection', 'article',
-                      'abstract noun', 'collective noun', 'measure word')
-
-
-    def __init__(self, chinese, pinyin, english, part_of_speech=None):
+    def __init__(self, chinese, pinyin, english, part_of_speech='unknown'):
         self.chinese = chinese
         self.pinyin = pinyin
         self.english = english
@@ -45,63 +58,68 @@ class FlashCard(object):
         a = 'Chinese entry:\t\t{}'.format(self.chinese)
         b = 'Pinyin:\t\t\t{}'.format(self.pinyin)
         c = 'English translation:\t{}'.format(self.english)
-        full = a + '\n' + b + '\n' + c
-        if self.part_of_speech:
-            d = 'Part of speech:\t\t{}'.format(self.part_of_speech)
-            full = full + '\n' + d
-        else:
-            d = 'Part of speech:\t\tunknown'
-            full = full + '\n' + d
+        d = 'Part of speech:\t\t{}'.format(self.part_of_speech)
+        full = a + '\n' + b + '\n' + c + '\n' + d
 
         return full
 
 
+    # 1. Look if the entry starts with a POS from the POS list. If it does, set
+    # self.part_of_speech to that POS and remove it from the entry text.
+    # 2. If the entry does not start with, but contains, a POS from the POS list,
+    # add the found POS (or parts of speech) to self.part_of_speech.
     def find_part_of_speech(self):
-        if self.english.startswith(self.PART_OF_SPEECH):
-            if self.english.startswith('noun'):
-                self.part_of_speech = 'noun'
-                self.english = self.english[len('noun '):]
-            if self.english.startswith('adjective'):
-                self.part_of_speech = 'adjective'
-                self.english = self.english[len('adjective '):]
-            if self.english.startswith('verb'):
-                self.part_of_speech = 'verb'
-                self.english = self.english[len('verb '):]
-            if self.english.startswith('adverb'):
-                self.part_of_speech = 'adverb'
-                self.english = self.english[len('adverb '):]
-            if self.english.startswith('idiom'):
-                self.part_of_speech = 'idiom'
-                self.english = self.english[len('idiom '):]
+        for pos in PARTS_OF_SPEECH_LIST:
+            if self.english.startswith(pos):
+                self.part_of_speech = pos
+                self.english = self.english[(len(pos)+1):]
+
+        matches = {pos for pos in PARTS_OF_SPEECH_LIST if pos in self.english}
+        if matches:
+            for match in matches:
+                if not self.part_of_speech:
+                    self.part_of_speech = match
+                else:
+                    self.part_of_speech = self.part_of_speech + ', ' + match
+
+        # if any(pos in self.english for pos in PARTS_OF_SPEECH_LIST):
+        #     print(pos)
 
         return
 
 
+    # Use regular expressions to clean up the entries.
     def clean_up(self):
+        # Map invalid question mark characters to '', in effect removing them.
         self.english = self.english.translate(TRANSLATION_TABLE)
 
-        # print(self.english)
+        # Hyperlinks in Pleco show up as a range of numbers followed by
+        # duplicates of Chinese characters. We remove these.
         self.english = re.sub(REGEX_NUMBER_CHINESE, '', self.english)
-        # print(self.english)
+
+        # We remove unnecessary hyperlink pinyin.
         self.english = re.sub(REGEX_PINYIN_CHINESE, r'\1 ', self.english)
-        # print(self.english)
+
+        # Put vocab descriptions (i.e. the subject/topic of entries) in
+        # parantheses.
         self.english = re.sub(REGEX_VOCAB_DESCRIPTIONS, r'(\1)', self.english)
-        # print(self.english)
+
+        # There were a couple of double spaces in the entries.
         self.english = self.english.replace('  ', ' ')
-        # print(self.english)
+
+        # This is a leftover from the hyperlinks which we want to remove.
         self.english = re.sub(TIP_LINK, r'(\1)', self.english)
-        # print(self.english)
 
-        # if re.search(REGEX_PARENTHESES_NUMBER, self.english):
-        #     print('MATCH', self)
-
-        # self.english = re.sub(r'(parenthesis)(.*)(1)', r'\3\2\1', self.english)
+        # Some entries had the vocab descriptions/topics/subjects of entries
+        # before the numbers (some entries have multiple translations, i.e. 1, 2
+        #, 3 et cetera). This just swaps the places of the two.
         self.english = re.sub(REGEX_PARENTHESES_NUMBER, r'\2\1', self.english)
-        # print(self.english)
 
         return
 
 
+    # Entries with multiple translations will be split up so that the different
+    # translations show up on separate rows in the output.
     def split_up(self, input_string):
         match = re.search(' \d ', input_string)
         if match:
