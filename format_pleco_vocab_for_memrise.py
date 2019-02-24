@@ -25,7 +25,7 @@ VOCAB_DESCRIPTIONS_LIST = ['literary', 'linguistics', 'archaic', 'zoology',
 'computing', 'geology', 'electricity', 'law', 'music', 'formal', 'informal',
 'abbreviation', 'history', 'economics', 'Islam', 'Catholicism',
 'transliteration', 'figurative', 'metallurgy', 'mechanics', 'well\-known phrase',
-'loanword', 'mythology']
+'loanword', 'mythology', 'ancient', 'music', 'calligraphy']
 
 # Make a bunch of regular expressions to catch parts of speech/subjects.
 VOCAB_DESCRIPTIONS_STRING = '|'.join(VOCAB_DESCRIPTIONS_LIST)
@@ -40,6 +40,7 @@ TIP_LINK = u'(See \w+ [\u4e00-\u9fff]+((?=[\s])|\S))'
 # REGEX_PARENTHESES_NUMBER = u'^(\([a-zA-Z]+\) )(\d )'
 
 
+# TODO: om POS är 'unknown', leta efter POS igen med REGEX.sub()
 # An object of the FlashCard class represents a Pleco flashcard, i.e. the
 # original Chinese entry, its translation and its pinyin (romanization).
 # The part of speech as well as the subject are all "hidden" in the English
@@ -169,6 +170,7 @@ def main():
 
     card_deck = []
     for entry in pleco_input_list:
+        print(entry)
         chinese, pinyin, english = entry.split('\t', 2)
         fc = FlashCard(chinese, pinyin, english)
         card_deck.append(fc)
