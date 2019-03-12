@@ -25,7 +25,7 @@ VOCAB_DESCRIPTIONS_LIST = ['literary', 'linguistics', 'archaic', 'zoology',
 'computing', 'geology', 'electricity', 'law', 'music', 'formal', 'informal',
 'abbreviation', 'history', 'economics', 'Islam', 'Catholicism',
 'transliteration', 'figurative', 'metallurgy', 'mechanics', 'well\-known phrase',
-'loanword', 'mythology', 'ancient', 'music', 'calligraphy']
+'loanword', 'mythology', 'ancient', 'music', 'calligraphy', 'onomatopoeia']
 
 # Make a bunch of regular expressions to catch parts of speech/subjects.
 VOCAB_DESCRIPTIONS_STRING = '|'.join(VOCAB_DESCRIPTIONS_LIST)
