@@ -4,7 +4,7 @@
 
 懿[懿]	(literary) (esp. of a woman) virtuous; exemplary 懿德 yìdé moral excellence 懿行 yìxíng exemplary conduct	yi4	adjective
 
-麤[麤]	1 coarse; crude; rough (opp. 细) 粗沙 cūshā coarse sand; grit 粗黑的手 cū hēi de shǒu rough, work-soiled hands 这个活儿太粗了。 Zhège huór tài cū le. This is too slovenly a piece of work.; 2 gruff; husky 粗嗓子 Cū sǎngzi husky voice 粗声大气 cū shēng dàqì a deep, gruff voice; 3 careless; negligent 这人心太粗。 Zhè rénxīn tài cū. This guy is too careless.; 4 rude; unrefined; (vulgar) 说话很粗 shuōhuà hěn cū speak rudely; use coarse language; 5 wide (in diameter); thick (opp. 细) 一条粗绳 Yī tiáo cū shéng a thick rope 这棵树很粗。 Zhè kē shù hěn cū. This tree has a thick trunk. adverb roughly; slightly 粗知一二 cūzhīyī'èr have a rough idea; know a little	cu1	adjective, verb, adverb
+麤[麤]	1 coarse; crude; rough (opp. 细) 粗沙 cūshā coarse sand; grit 粗黑的手 cū hēi de shǒu rough, work-soiled hands 这个活儿太粗了。 Zhège huór tài cū le. This is too slovenly a piece of work.; 2 gruff; husky 粗嗓子 Cū sǎngzi husky voice 粗声大气 cū shēng dàqì a deep, gruff voice; 3 careless; negligent 这人心太粗。 Zhè rénxīn tài cū. This guy is too careless.; 4 rude; unrefined; (vulgar) 说话很粗 shuōhuà hěn cū speak rudely; use coarse language; 5 wide (in diameter); thick (opp. 细) 一条粗绳 Yī tiáo cū shéng a thick rope 这棵树很粗。 Zhè kē shù hěn cū. This tree has a thick trunk. adverb roughly; slightly 粗知一二 cūzhīyī'èr have a rough idea; know a little	cu1	adjective, adverb, verb
 
 骉[驫]	(archaic) galloping horses	biao1	noun
 
@@ -130,7 +130,7 @@
 
 栓[栓]	1 bolt; plug; pin 枪栓 qiāngshuān rifle bolt; 2 stopper; cork 栓式按钮 shuān shì ànniǔ bolt-push piece	shuan1	noun
 
-正楷[正楷]	calligraphy regular script	zheng4kai3	noun
+正楷[正楷]	(calligraphy) regular script	zheng4kai3	noun
 
 卅[卅]	number thirty 五卅惨案 Wǔ sà cǎn'àn the May 30th Massacre (1925, in Shanghai)	sa4	unknown
 
@@ -190,13 +190,13 @@
 
 奻[奻]		nuan2	unknown
 
-认知[認知]	(philosophy) psychology verb cognize; understand noun cognition	ren4zhi1	unknown, noun, verb
+认知[認知]	(philosophy) psychology verb cognize; understand noun cognition	ren4zhi1	unknown, verb, noun
 
 巧言令色[巧言令色]	clever talk and an ingratiating manner 巧言令色, 鲜矣仁。(《论语》) Qiǎo yán lìng sè, xiān yǐ rén. (《Lúnyǔ》) Clever talk and an ingratiating manner are seldom found in a virtuous man.	qiao3yan2-ling4se4	idiom
 
 区块链[區塊鏈]	blockchain (computing)	qu1kuai4lian4	unknown
 
-轰隆[轟隆]	onomatopoeia rumble; roll 轰隆的机器声 Hōnglōng de jīqì shēng the hum of machines 雷声轰隆地响。 léishēng hōnglōng de xiǎng. Thunder rumbled.	hong1long1	unknown
+轰隆[轟隆]	(onomatopoeia) rumble; roll 轰隆的机器声 Hōnglōng de jīqì shēng the hum of machines 雷声轰隆地响。 léishēng hōnglōng de xiǎng. Thunder rumbled.	hong1long1	unknown
 
 党纲[黨綱]	party programme	dang3gang1	noun
 
@@ -324,7 +324,7 @@
 
 清寂[清寂]	cold and quiet	qing1ji4	adjective
 
-无常[無常]	variable; changeable 变化无常 biànhuà-wúcháng constantly changing; changeable; capricious 反复无常 fǎnfùwúcháng behave capriciously; blow hot and cold; chop and change noun astrology (Wúcháng) demon regarded as the messenger of death verb euphemistic die 一旦无常万事休。 Yīdàn wúcháng wànshì xiū. When death comes, everything is over.	wu2chang2	verb, noun, verb
+无常[無常]	variable; changeable 变化无常 biànhuà-wúcháng constantly changing; changeable; capricious 反复无常 fǎnfùwúcháng behave capriciously; blow hot and cold; chop and change noun astrology (Wúcháng) demon regarded as the messenger of death verb euphemistic die 一旦无常万事休。 Yīdàn wúcháng wànshì xiū. When death comes, everything is over.	wu2chang2	verb, verb, noun
 
 樱花[櫻花]	oriental cherry 日本樱花 Rìběn yīnghuā Japanese flowering cherry	ying1hua1	noun
 
@@ -522,7 +522,7 @@
 
 逼真[逼真]	1 lifelike; true to life 这幅画画得十分逼真。 zhè fú huà huà de shífēn bīzhēn. This painting is really true to life (or lifelike).; 2 distinct; clear 听得逼真 Tīng de bīzhēn hear distinctly 看得逼真 kàn de bīzhēn have a clear view of sth.	bi1zhen1	adjective
 
-飒[颯]	(literary) onomatopoeia rustle; sough verb wither adjective (of women) natural and unrestrained; elegant; valiant	sa4	unknown, adjective, verb
+飒[颯]	(literary) (onomatopoeia) rustle; sough verb wither adjective (of women) natural and unrestrained; elegant; valiant	sa4	unknown, adjective, verb
 
 褛[褸]	front part of a Chinese-style jacket adjective (literary) worn-out; in rags (See lan2lv3 褴褛l)ánlǚ	lü3	noun, adjective
 
@@ -536,7 +536,7 @@
 
 姘[姘]	have illicit relations with; commit adultery	pin1	verb
 
-造化[造化]	(literary) noun Creator; Nature; Creation 造化钟神秀, 阴阳割昏晓。(杜甫《登泰山》) zàohuà zhōng shénxiù, yīnyáng gē hūnxiǎo. Here Creation concentrated unearthly glory, | Dark north slope, the sunlit south divide dusk and dawn. 造化赋形, 支体必双, 神理为用, 事不孤立。(刘勰《文心雕龙》) zàohuà fù xíng, zhī tǐ bì shuāng, shén lǐ wéi yòng, shì bù gūlì. Nature, creating living beings, endows them with limbs in pairs. The Divine Reason operates in such a way that nothing stands alone. verb (of Nature or presumed divine force) create; make 夺天地造化之功 duó tiāndì zàohuà zhī gōng rob Heaven and Earth of their creative powers	zao4hua4	unknown, noun, verb
+造化[造化]	(literary) noun Creator; Nature; Creation 造化钟神秀, 阴阳割昏晓。(杜甫《登泰山》) zàohuà zhōng shénxiù, yīnyáng gē hūnxiǎo. Here Creation concentrated unearthly glory, | Dark north slope, the sunlit south divide dusk and dawn. 造化赋形, 支体必双, 神理为用, 事不孤立。(刘勰《文心雕龙》) zàohuà fù xíng, zhī tǐ bì shuāng, shén lǐ wéi yòng, shì bù gūlì. Nature, creating living beings, endows them with limbs in pairs. The Divine Reason operates in such a way that nothing stands alone. verb (of Nature or presumed divine force) create; make 夺天地造化之功 duó tiāndì zàohuà zhī gōng rob Heaven and Earth of their creative powers	zao4hua4	unknown, verb, noun
 
 道台[道臺]	(archaic) intendant of a circuit (an administrative division)	dao4tai2	noun
 
@@ -620,7 +620,7 @@
 
 累累[纍纍]	1 (literary) (of fruit, achievements etc) clusters of; 2 piles of; 3 heaps of; 4 gaunt; 5 haggard; 6 wretched; 7 Taiwan pr. [lěilěi]	lei2lei2	unknown
 
-犹[猶]	(literary) verb just as; like 虽死犹生 suīsǐyóushēng live on in spirit adverb still 犹未定夺 yóu wèi dìngduó still undecided; not decided yet 犹有可为 yóuyǒukěwéi can still do something about it	you2	unknown, verb, adverb
+犹[猶]	(literary) verb just as; like 虽死犹生 suīsǐyóushēng live on in spirit adverb still 犹未定夺 yóu wèi dìngduó still undecided; not decided yet 犹有可为 yóuyǒukěwéi can still do something about it	you2	unknown, adverb, verb
 
 暴戾[暴戾]	(literary) ruthless and tyrannical; cruel and fierce	bao4li4	adjective
 
@@ -888,7 +888,7 @@
 
 甯[甯]	a surname	Ning4	noun
 
-钧[鈞]	(archaic) jun (unit of weight, equal to 30 jin) 千钧之力 Qiān jūn zhī lì as powerful as being able to lift a thousand jun pronoun (literary) (courteous) [said to one's seniors or superiors] you; your 钧命 jūnmìng your instructions	jun1	measure word, noun, pronoun
+钧[鈞]	(archaic) jun (unit of weight, equal to 30 jin) 千钧之力 Qiān jūn zhī lì as powerful as being able to lift a thousand jun pronoun (literary) (courteous) [said to one's seniors or superiors] you; your 钧命 jūnmìng your instructions	jun1	measure word, pronoun, noun
 
 翊[翊]	(literary) assist (a ruler) 翊戴 yìdài assist and support (a ruler)	yi4	verb
 
